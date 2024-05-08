@@ -32,7 +32,6 @@ const router = createBrowserRouter([
   }
 ] ,  { basename: "/trainer-app" });
 
-// ,  { basename: "/trainer-app" }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   
