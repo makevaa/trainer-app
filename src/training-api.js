@@ -1,3 +1,4 @@
+// Fetch all trainings (no customer info)
 export const fetchTrainings = () => {
     return fetch(import.meta.env.VITE_API_URL_TRAININGS)
     .then(res => {
@@ -8,6 +9,7 @@ export const fetchTrainings = () => {
     })
 }
 
+// Fetch trainings with customer infos
 export const fetchTrainingsWithInfo = () => {
     return fetch(import.meta.env.VITE_API_URL_TRAININGS_INFO)
     .then(res => {
@@ -18,6 +20,7 @@ export const fetchTrainingsWithInfo = () => {
     })
 }
 
+// Save new training
 export const saveNewTraining = newTraining => {
     return fetch(import.meta.env.VITE_API_URL_TRAININGS, {
         method: 'POST',
@@ -34,6 +37,7 @@ export const saveNewTraining = newTraining => {
     .catch(err => console.error(err))
 }
 
+// Update existing training by id
 export const updateTraining =  (id, updatedTraining) => {
     const url = `${import.meta.env.VITE_API_URL_TRAININGS}/${id}`; 
 
@@ -52,7 +56,7 @@ export const updateTraining =  (id, updatedTraining) => {
     .catch(err => console.error(err))
 }
 
-
+// Delete training by id
 export const deleteTraining = id => {
     const url = `${import.meta.env.VITE_API_URL_TRAININGS}/${id}`;
     if (window.confirm("Delete training?")) {
@@ -60,8 +64,6 @@ export const deleteTraining = id => {
         .then(res => {
             if (!res.ok) 
                 throw new Error("Error in deletion: " + res.statusText)
-
-            //return res.json();
         })
         .then(() => {
             return fetchTrainingsWithInfo();

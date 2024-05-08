@@ -36,8 +36,6 @@ export default function AddCustomer( {setCustomers} ) {
     handleClose();
   }
 
-
-
   return (
     <>
       <Button variant="outlined" onClick={handleClickOpen}>

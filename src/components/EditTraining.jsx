@@ -15,11 +15,10 @@ dayjs.extend(customParseFormat);
 import { updateTraining } from '../training-api.js';
 
 
-
 export default function EditTraining( {data, setTrainings} ) {
-    const [open, setOpen] = useState(false);
-    const [training, setTraining] = useState( {} );
 
+  const [open, setOpen] = useState(false);
+  const [training, setTraining] = useState( {} );
 
   const handleClickOpen = () => {
     setTraining({
@@ -32,27 +31,23 @@ export default function EditTraining( {data, setTrainings} ) {
     setOpen(true);
   };
 
+  const handleClose = () => {
+      setOpen(false);
+  };
 
+  const handleUpdate = () => {
+      // Format date to ISO string before updating
+      let formattedDate = training.date;
+      if (typeof formattedDate !== 'string') 
+          formattedDate = formattedDate.toISOString();
 
+      setTraining({...training, date: formattedDate})
 
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-
-    const handleUpdate = () => {
-        // Format date to ISO string before updating
-        let formattedDate = training.date;
-        if (typeof formattedDate !== 'string') 
-            formattedDate = formattedDate.toISOString();
-
-        setTraining({...training, date: formattedDate})
-
-        updateTraining(data.id, training)
-        .then(res => setTrainings(res))
-        .catch(err => console.log(err))
-        handleClose();
-    }
+      updateTraining(data.id, training)
+      .then(res => setTrainings(res))
+      .catch(err => console.log(err))
+      handleClose();
+  }
 
 
   return (
@@ -65,20 +60,21 @@ export default function EditTraining( {data, setTrainings} ) {
         onClose={handleClose}
       >
        <DialogTitle>Edit training</DialogTitle>
+
         <DialogContent>
           
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker 
-                value={dayjs(training.date)} 
-                onChange={ e => setTraining({...training, date: e }) }
-                label="Date"
-                format='DD.MM.YYYY HH.mm'
-                views={['year', 'month', 'day']}
-            />
-        </LocalizationProvider>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker 
+                  value={dayjs(training.date)} 
+                  onChange={ e => setTraining({...training, date: e }) }
+                  label="Date"
+                  format='DD.MM.YYYY HH.mm'
+                  views={['year', 'month', 'day']}
+              />
+          </LocalizationProvider>
 
 
-        <TextField
+          <TextField
             margin="dense"
             label="Duration (min)"
             value={training.duration}
@@ -87,7 +83,7 @@ export default function EditTraining( {data, setTrainings} ) {
             variant="standard"
           />
 
-        <TextField
+          <TextField
             margin="dense"
             label="Activity"
             value={training.activity}

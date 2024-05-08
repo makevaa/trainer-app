@@ -8,14 +8,13 @@ import { Link, Outlet } from 'react-router-dom';
 
 import CustomerList from './components/CustomerList';
 
-//<CustomerList />
 
 function App() {
 
   return (
     <>
-   
       <CssBaseline />
+
       <AppBar position='static' width='100%'>
         <Toolbar>
           <Typography variant='h6'>TrainerApp</Typography>
@@ -25,13 +24,10 @@ function App() {
             <Link to={"/customers"}>Customers</Link>
             <Link to={"/trainings"}>Trainings</Link>
           </nav>
-          
         </Toolbar>
       </AppBar>
 
       <Outlet />
-  
-
     </>
   )
 }

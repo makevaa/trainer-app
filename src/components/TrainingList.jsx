@@ -3,24 +3,15 @@ import { AgGridReact } from 'ag-grid-react';
 import "ag-grid-community/styles/ag-grid.css"; 
 import "ag-grid-community/styles/ag-theme-material.css";
 import Button from '@mui/material/Button';
-
 import dayjs from 'dayjs';
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 
-
-
 import { fetchTrainingsWithInfo, deleteTraining  } from '../training-api.js';
-import { fetchCustomers } from '../customer-api.js';
-
 import  AddTraining  from './AddTraining.jsx'
 import  EditTraining  from './EditTraining.jsx'
 
 function TrainingList( {trainings, setTrainings}) {
-
-    //const [trainings, setTrainings] = useState([]);
-
-
 
     const [colDef] = useState([
         { 
@@ -46,7 +37,7 @@ function TrainingList( {trainings, setTrainings}) {
             </Button>
         }
     ]);
-// {params.data._links.training.href}
+
     useEffect(() => {
         handleFetch();
     }, []);
@@ -71,8 +62,6 @@ function TrainingList( {trainings, setTrainings}) {
         .catch(err => console.log(err))
     }
 
-
-    
 
     return(
        <>

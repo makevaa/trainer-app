@@ -49,7 +49,6 @@ export default function AddTraining( {setTrainings} ) {
         setOpen(false);
     };
 
-
     const handleSave = () => {
         // Format date to ISO string before saving new training
         const formattedDate = training.date.toISOString();
@@ -73,52 +72,52 @@ export default function AddTraining( {setTrainings} ) {
         onClose={handleClose}
       >
         <DialogTitle>New training</DialogTitle>
+
         <DialogContent>
 
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker 
-                value={dayjs(training.date)} 
-                onChange={ e => setTraining({...training, date: e }) }
-                label="Date"
-                format='DD.MM.YYYY HH.mm'
-                views={['year', 'month', 'day']}
-            />
-        </LocalizationProvider>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker 
+                  value={dayjs(training.date)} 
+                  onChange={ e => setTraining({...training, date: e }) }
+                  label="Date"
+                  format='DD.MM.YYYY HH.mm'
+                  views={['year', 'month', 'day']}
+              />
+          </LocalizationProvider>
 
-
-        <TextField
-            margin="dense"
-            label="Duration (min)"
-            value={training.duration}
-            onChange={ e => setTraining( {...training, duration: e.target.value} ) }
-            fullWidth
-            variant="standard"
+          <TextField
+              margin="dense"
+              label="Duration (min)"
+              value={training.duration}
+              onChange={ e => setTraining( {...training, duration: e.target.value} ) }
+              fullWidth
+              variant="standard"
           />
 
-        <TextField
-            margin="dense"
-            label="Activity"
-            value={training.activity}
-            onChange={ e => setTraining( {...training, activity: e.target.value} ) }
-            fullWidth
-            variant="standard"
+          <TextField
+              margin="dense"
+              label="Activity"
+              value={training.activity}
+              onChange={ e => setTraining( {...training, activity: e.target.value} ) }
+              fullWidth
+              variant="standard"
           />
         
-        <Autocomplete
-            disablePortal
-            options= {
-                customers.map( customer => {
-                    // Create objects for customer dropdown menu
-                    return {
-                        id: customer._links.self.href,
-                        label: `${customer.firstname} ${customer.lastname}`
-                    }
-                }) 
-            }
-            sx={{ width: 300 }}
-            onChange={ (e, value) => setTraining( {...training, customer: value.id} ) }
-            renderInput={(params) => <TextField {...params} label="Select customer" />}
-        />
+          <Autocomplete
+              disablePortal
+              options= {
+                  customers.map( customer => {
+                      // Create objects for customer dropdown menu
+                      return {
+                          id: customer._links.self.href,
+                          label: `${customer.firstname} ${customer.lastname}`
+                      }
+                  }) 
+              }
+              sx={{ width: 300 }}
+              onChange={ (e, value) => setTraining( {...training, customer: value.id} ) }
+              renderInput={(params) => <TextField {...params} label="Select customer" />}
+          />
 
         </DialogContent>
 

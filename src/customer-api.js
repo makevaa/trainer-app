@@ -1,3 +1,4 @@
+// Fetch all customers
 export const fetchCustomers = () => {
     return fetch(import.meta.env.VITE_API_URL_CUSTOMERS)
     .then(res => {
@@ -8,6 +9,7 @@ export const fetchCustomers = () => {
     })
 }
 
+// Fetch 1 customer by id
 export const fetchCustomerById = url => {
     return fetch(url)
     .then(res => {
@@ -18,8 +20,8 @@ export const fetchCustomerById = url => {
     })
 }
 
-
-export const saveNewCustomer = (newCustomer) => {
+// Save new customer
+export const saveNewCustomer = newCustomer => {
     return fetch(import.meta.env.VITE_API_URL_CUSTOMERS, {
         method: 'POST',
         headers: {'content-type': 'application/json'},
@@ -35,7 +37,7 @@ export const saveNewCustomer = (newCustomer) => {
     .catch(err => console.error(err))
 }
 
- 
+//Update customer based on url/id
 export const updateCustomer =  (url, updatedCustomer) => {
     return fetch(url, {
         method: 'PUT',
@@ -52,6 +54,7 @@ export const updateCustomer =  (url, updatedCustomer) => {
     .catch(err => console.error(err))
 }
 
+// Delete customer based on url/id
 export const deleteCustomer = url => {
     if (window.confirm("Delete customer?")) {
         return fetch(url, { method:'DELETE' })

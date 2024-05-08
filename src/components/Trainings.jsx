@@ -4,9 +4,8 @@ import { useState } from "react";
 import TrainingList from './TrainingList';
 
 export default function Trainings() {
-
+    
     const [trainings, setTrainings] = useState([]);
-
 
     return (
         <>  

@@ -5,15 +5,10 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 
 import { fetchCustomers, deleteCustomer } from '../customer-api.js';
-
 import  AddCustomer  from './AddCustomer.jsx'
 import  EditCustomer  from './EditCustomer.jsx'
 
-
-
 function CustomerList({customers, setCustomers}) {
-
-    //const [customers, setCustomers] = useState([]);
 
     const [colDef] = useState([
         { field:'firstname', headerName:'First name', filter:true, floatingFilter: true, width:150  },
@@ -35,13 +30,11 @@ function CustomerList({customers, setCustomers}) {
                 Delete
             </Button>
         }
-        
     ]);
 
     useEffect(() => {
         handleFetch();
     }, []);
-
 
     const handleDelete = url => {
         deleteCustomer(url)
@@ -54,7 +47,6 @@ function CustomerList({customers, setCustomers}) {
         .then(data => setCustomers(data._embedded.customers))
         .catch(err => console.log(err))
     }
-
 
     return(
        <>
@@ -73,4 +65,3 @@ function CustomerList({customers, setCustomers}) {
 }
 
 export default CustomerList;
-

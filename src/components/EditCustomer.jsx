@@ -9,10 +9,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { updateCustomer } from '../customer-api.js';
 
 
-
 export default function EditCustomer( {data, setCustomers} ) {
-    const [open, setOpen] = useState(false);
-    const [customer, setCustomer] = useState( {} );
+  const [open, setOpen] = useState(false);
+  const [customer, setCustomer] = useState( {} );
 
   const handleClickOpen = () => {
     setCustomer({
