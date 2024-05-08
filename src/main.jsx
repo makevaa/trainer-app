@@ -27,7 +27,8 @@ const router = createBrowserRouter([
         path: "trainings",
         element: <Trainings />,
       },
-    ]
+    ],
+    { basename: "/trainer-app" }
   }
 ]);
 
