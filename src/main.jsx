@@ -27,10 +27,10 @@ const router = createBrowserRouter([
         path: "trainings",
         element: <Trainings />,
       },
-    ],
-    { basename: "/trainer-app" }
+    ]
+   
   }
-]);
+],  { basename: "/trainer-app" });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   
