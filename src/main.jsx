@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     ]
    
   }
-]);
+] ,  { basename: "/trainer-app" });
 
 // ,  { basename: "/trainer-app" }
 
